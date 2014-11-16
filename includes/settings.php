@@ -45,7 +45,7 @@ class Settings_Caldera_Smtp_Mailer extends Caldera_Smtp_Mailer{
 	public function save_config(){
 		
 		if( empty( $_POST['caldera-smtp-setup'] ) || !wp_verify_nonce( $_POST['caldera-smtp-setup'], 'caldera-smtp-mailer' ) ){
-			if( !empty( $_POST['config'] ) ){
+			if( empty( $_POST['config'] ) ){
 				return;
 			}
 		}
