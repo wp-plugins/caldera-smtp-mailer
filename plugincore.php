@@ -10,9 +10,9 @@
  * Plugin Name: Caldera SMTP Mailer
  * Plugin URI:  
  * Description: Configure the WordPress Mailer to use SMTP server like SendGrid, MandrillApp or your own.
- * Version:     1.0.0
- * Author:      David
- * Author URI:  
+ * Version:     1.0.1
+ * Author:      David Cramer
+ * Author URI:  http://cramer.co.za
  * Text Domain: caldera-smtp-mailer
  * License:     GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
@@ -26,7 +26,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 define('CSMTP_PATH',  plugin_dir_path( __FILE__ ) );
 define('CSMTP_URL',  plugin_dir_url( __FILE__ ) );
-define('CSMTP_VER',  '1.0.0' );
+define('CSMTP_VER',  '1.0.1' );
 
 
 

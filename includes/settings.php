@@ -16,7 +16,7 @@ class Settings_Caldera_Smtp_Mailer extends Caldera_Smtp_Mailer{
 		// send test mail
 		add_action( 'wp_ajax_csmtp_send_test', array( $this, 'send_test_mail') );
 		// hook manual saving
-		add_action( 'init', array( $this, 'save_config') );
+		//add_action( 'init', array( $this, 'save_config') );
 
 	}
 
@@ -45,7 +45,11 @@ class Settings_Caldera_Smtp_Mailer extends Caldera_Smtp_Mailer{
 	public function save_config(){
 		
 		if( empty( $_POST['caldera-smtp-setup'] ) || !wp_verify_nonce( $_POST['caldera-smtp-setup'], 'caldera-smtp-mailer' ) ){
-			return;
+			if( empty( $_POST['caldera-smtp-setup'] ) ){
+				if( empty( $_POST['config'] ) ){
+					return;
+				}
+			}
 		}
 
 		if( !empty( $_POST['caldera-smtp-setup'] ) && empty( $_POST['config'] ) ){
@@ -58,8 +62,12 @@ class Settings_Caldera_Smtp_Mailer extends Caldera_Smtp_Mailer{
 		if( !empty( $_POST['config'] ) ){
 
 			$config = json_decode( stripslashes_deep( $_POST['config'] ), true );
-			update_option( '_caldera_smtp_mailer', $config );
-			wp_send_json_success( $config );
+			if(	wp_verify_nonce( $config['caldera-smtp-setup'], 'caldera-smtp-mailer' ) ){
+				update_option( '_caldera_smtp_mailer', $config );
+				wp_send_json_success( $config );
+			}else{
+				wp_send_json_error( $config );
+			}
 
 		}
 
