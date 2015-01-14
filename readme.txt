@@ -3,7 +3,7 @@ Contributors: Desertsnowman
 Tags: SMTP, wp_mail, mailer, email, mandrillapp, sendgrid
 Requires at least: 3.9
 Tested up to: 4.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2
 
 Send system emails through SMTP server
@@ -29,6 +29,11 @@ none yet.
 
 
 == Changelog ==
+
+= 1.0.1 =
+
+Fixed a bug with saving when Caldera Forms is installed.
+
 
 = 1.0.0 =
 Initial Release
